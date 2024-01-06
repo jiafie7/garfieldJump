@@ -1,1 +1,1 @@
-# garfieldJump
+# Garfield Jump in JavaScript!

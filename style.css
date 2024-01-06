@@ -1,0 +1,25 @@
+.grid {
+    margin: auto;
+    width: 400px;
+    height: 600px;
+    background-image: url("background.jpg");
+    position: relative;
+    font-size: 100px;
+    text-align: center;
+}
+
+.garfield {
+    width: 67px; /*87*/
+    height: 85px; /*85*/
+    background-image: url('garfield.png');
+    background-size: 100%;
+    position: absolute;
+}
+
+.ground {
+    width: 70px;
+    height: 14px;
+    background-image: url('ground.png');
+    background-size: 100%;
+    position: absolute;
+}

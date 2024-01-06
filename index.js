@@ -1,3 +1,23 @@
+
+// let isGameOver = false
+// let groundCount = 5
+// let grounds = []
+// let score = 0
+
+// // initial position
+// let garfieldLeftSpace = 50
+// let startPoint = 150
+// let garfieldBottomSpace = startPoint
+
+// let isJumping = true
+// let upTimerId
+// let downTimerID
+// let isGoingLeft = false
+// let isGoingRight = false
+// let leftTimerId
+// let rightTimerId
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid')
     const garfield = document.createElement('div')
@@ -181,6 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(upTimerId)
         clearInterval(leftTimerId)
         clearInterval(rightTimerId)
+
+        // restart()        
     }
 
     function start() {
@@ -195,5 +217,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     start()
 
+    function restart() {
+        isGameOver = false
+        grounds = []
+        score = 0
+
+        // initial position
+        // garfieldLeftSpace = 50
+        // startPoint = 150
+        // garfieldBottomSpace = startPoint
+        isJumping = true
+        isGoingLeft = false
+        isGoingRight = false
+
+        let restart = document.createElement('div')
+        restart.textContent = 'Restart'
+        grid.appendChild(restart)
+        restart.classList.add('restart')
+        restart.addEventListener('click', function(){
+            while (grid.firstChild) {
+                grid.removeChild(grid.firstChild)
+            }
+            start()
+        })
+    }
     
 })

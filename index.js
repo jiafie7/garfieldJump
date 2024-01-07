@@ -1,26 +1,7 @@
-
-// let isGameOver = false
-// let groundCount = 5
-// let grounds = []
-// let score = 0
-
-// // initial position
-// let garfieldLeftSpace = 50
-// let startPoint = 150
-// let garfieldBottomSpace = startPoint
-
-// let isJumping = true
-// let upTimerId
-// let downTimerID
-// let isGoingLeft = false
-// let isGoingRight = false
-// let leftTimerId
-// let rightTimerId
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid')
     const garfield = document.createElement('div')
+
     let isGameOver = false
     let groundCount = 5
     let grounds = []
@@ -188,6 +169,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function reStart() {
+        isGameOver = false
+        grounds = []
+        score = 0
+
+        startPoint = 150
+        garfieldBottomSpace = startPoint
+        isJumping = true
+        isGoingLeft = false
+        isGoingRight = false
+
+        let restart = document.createElement('div')
+        restart.textContent = 'Restart'
+        restart.classList.add('restart')
+        grid.appendChild(restart)
+        restart.addEventListener('click', function() {
+            while (grid.firstChild) {
+                grid.removeChild(grid.firstChild)
+            }
+            start()
+        })
+    }
+
     // call this when game over
     function gameOver() {
         isGameOver = true
@@ -202,7 +206,12 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(leftTimerId)
         clearInterval(rightTimerId)
 
-        // restart()        
+        downTimerID = null
+        upTimerId = null
+        leftTimerId = null
+        rightTimerId = null
+
+        reStart()        
     }
 
     function start() {
@@ -215,31 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener('keyup', control)
         }
     }
+
     start()
-
-    function restart() {
-        isGameOver = false
-        grounds = []
-        score = 0
-
-        // initial position
-        // garfieldLeftSpace = 50
-        // startPoint = 150
-        // garfieldBottomSpace = startPoint
-        isJumping = true
-        isGoingLeft = false
-        isGoingRight = false
-
-        let restart = document.createElement('div')
-        restart.textContent = 'Restart'
-        grid.appendChild(restart)
-        restart.classList.add('restart')
-        restart.addEventListener('click', function(){
-            while (grid.firstChild) {
-                grid.removeChild(grid.firstChild)
-            }
-            start()
-        })
-    }
-    
 })
